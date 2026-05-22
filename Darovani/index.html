@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="cs" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://cloudflare.com" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com">
+    <title>Index</title>
+</head>
+<body>
+<div class="top">
+    <div class="picture1"><img alt="Logo-Amber" height="80" src="Zdroj/amber-logo.svg" width="160"></div>
+    <div class="picture2"><img alt="Dárce-logo" height="80" src="Zdroj/portal-darce-logo.svg" width="160"></div>
+    <div class="picture3"></div>
+</div>
+<div class="middle">
+    <div class="middle-text-wrap">
+        <div class="control-mid-text">
+            <div class="mid-text-format">
+                <p class="middle-text">Email<span class="star">*</span></p>
+            </div>
+            <input class="email-input" id="email" placeholder="Zadejte váš e-mail" type="email">
+            <div class="mid-text-format">
+                <p class="middle-text">Heslo<span class="star">*</span></p>
+            </div>
+            <div class="password-wrapper">
+                <input class="password-input" id="password" placeholder="••••••••••" type="password">
+                <span class="eye" id="toggle"><span class="material-icons">visibility_off</span></span>
+            </div>
+            <div class="mid-text-format">
+                <a class="c-Text-forgotten-password" href="heslo.php">
+                <span class="lock-wrap">
+                    <span class="material-icons">lock</span>
+                </span>Zapomenuté heslo
+                </a>
+            </div>
+        </div>
+
+        <div class="middle-text-bottom">
+            <div class="buttons">
+                <a class="large-btn1" onclick="verify()">Přihlásit se</a>
+                <div class="line"><span class="between-large-numbers">nebo</span></div>
+                <a class="large-btn2">Vytvořit nový účet Moje Amber</a>
+                <div class="something1-control">
+                    <div class="something1">
+                        <span>Jste náš stávající dárce a nemůžete se přihlásit?<a class="something2" href="idk.php">Klikněte zde</a> a nastavte si heslo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+
+    <div class="bottom-page-text">
+        <div class="bottom-page-text-columns-wrapper">
+            <div class="lists-wrap">
+                <span class="footer-rows">Amber Plasma</span>
+                <ul class="lists">
+                    <li>Proč darovat plazmu</li>
+                    <li>Staňte se dárcem</li>
+                    <li>Odměny</li>
+                    <li>Novinky</li>
+                    <li>Slovník pojmů</li>
+                    <li>FAQ</li>
+                </ul>
+            </div>
+            <div class="lists-wrap">
+                <span class="footer-rows">O nás</span>
+                <ul class="lists">
+                    <li>O společnosti</li>
+                    <li>Kariéra</li>
+                    <li>Napsali o nás</li>
+                    <li>Partneři</li>
+                    <li>Kontakty</li>
+                    <li>Whistleblowing</li>
+                    <li>GDPR</li>
+                </ul>
+            </div>
+            <div class="lists-wrap">
+                <span class="footer-rows">Dárcovská centra</span>
+                <ul class="lists">
+                    <li>Česká Lípa</li>
+                    <li>Děčín</li>
+                    <li>Cheb</li>
+                    <li>Chomutov</li>
+                    <li>Jablonec nad Nisou</li>
+                    <li>Karlovy Vary</li>
+                </ul>
+            </div>
+            <div class="lists-wrap">
+                <ul class="lists">
+                    <li class="bottom-page-text-columns-mid-text">Litoměřice</li>
+                    <li class="bottom-page-text-columns-mid-text">Mladá Boleslav</li>
+                    <li class="bottom-page-text-columns-mid-text">Plzeň</li>
+                    <li class="bottom-page-text-columns-mid-text">Praha - Nové Butovice</li>
+                    <li class="bottom-page-text-columns-mid-text">Příbram</li>
+                    <li class="bottom-page-text-columns-mid-text">Teplice</li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-right-column-control">
+            <span class="bottom-page-text-right">Bezplatná linka</span>
+            <div class="control-wrap-bottom-page-text-right-under-phone">
+                <span class="bottom-page-text-right-phone">
+                    <span class="phone-text-wrap">
+                        <span class="material-icons">phone</span>
+                        <span class="bottom-page-text-columns-right-phone-number">800 606 806</span>
+                    </span>
+                    <span class="bottom-page-text-right-phone-text">po–pá 7.30-16.00</span>
+                </span>
+                <div class="under-phone-text">
+                    <span class="bottom-page-text-right-under-phone">
+                            Pro objednání či přeobjednání termínu, prosím volejte naší zelenou linku.
+                            Rezervovat termín si můžete i online na našem
+                            <a class="text-color-bottom" href="rezervace.html">rezervačním portálu</a>
+                    </span>
+                </div>
+                <div class="btn">
+                    <p class="button">Objednat se</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const password = document.querySelector("#password");
+    const toggle = document.querySelector("#toggle");
+
+    toggle.addEventListener("click", () => {
+        const icon = toggle.querySelector(".material-icons");
+
+        if (password.type === "password") {
+            password.type = "text";
+            icon.textContent = "visibility";       // otevřené oko
+        } else {
+            password.type = "password";
+            icon.textContent = "visibility_off";   // přeškrtnuté oko
+        }
+    });
+</script>
+<script>
+    function verify() {
+        const email = document.getElementById("email").value;
+        const heslo = document.getElementById("password").value;
+
+        if (!email || !heslo) {
+            alert("Vyplňte prosím e-mail i heslo.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            alert("Zadejte platný e-mail ve formátu neco@domena.cz");
+            return;
+        }
+
+        // doplnění do popupu
+        document.getElementById("out-email").textContent = "E-mail: " + email;
+        document.getElementById("out-password").textContent = "Heslo: " + heslo;
+
+        // zobrazení popupu
+        document.getElementById("popup").classList.remove("hidden");
+    }
+
+    function closePopup() {
+        document.getElementById("popup").classList.add("hidden");
+    }
+</script>
+
+
+
+<div id="popup" class="popup hidden">
+    <div class="popup-content">
+        <h2>Zadal jsi:</h2>
+        <p id="out-email"></p>
+        <p id="out-password"></p>
+
+        <button class="btn-close" onclick="closePopup()">Zavřít</button>
+    </div>
+</div>
+
+</body>
+</html>

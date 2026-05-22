@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #CBDEE6;
+    display: flex;
+    flex-direction: column;
+    min-width: 100px;
+}
+
+/* TOP */
+.top {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px;
+    z-index: 9999;
+}
+
+.picture1, .picture2 {
+    display: flex;
+    align-items: center;
+}
+
+.picture3 {
+    width: 160px;
+}
+
+/* MIDDLE */
+.middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 125px;
+    padding-bottom: 20px;
+}
+
+.middle-text-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #194564;
+}
+
+.mid-text-format {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.middle-text {
+    display: flex;
+}
+
+.star {
+    padding-left: 2px;
+    color: #B90E49;
+}
+
+/* Inputs */
+.email-input, .password-input {
+    line-height: 50px;
+    padding-left: 15px;
+    font-size: large;
+}
+
+.email-input {
+    max-width: 600px;
+    padding-right: 380px;
+}
+
+.password-input {
+    max-width: 600px;
+}
+
+/* password eye (antd má vlastní) */
+.password-wrapper {
+    position: relative;
+    display: flex;
+}
+
+.password-wrapper input {
+    padding-right: 40px;
+}
+
+.password-wrapper .eye {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Forgotten password */
+.c-Text-forgotten-password {
+    display: flex;
+    align-items: center;
+}
+
+/* BUTTONS */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.large-btn1, .large-btn2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+    border-radius: 25px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.large-btn1 {
+    width: 180px;
+    background-color: #B90E49;
+    border: 2px solid #B90E49;
+}
+
+.large-btn2 {
+    width: 320px;
+    background-color: #194564;
+    border: 2px solid #194564;
+}
+
+/* "nebo" line */
+.line {
+    display: flex;
+    align-items: center;
+    width: 600px;
+    color: #555;
+}
+
+.line::before, .line::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1.5px solid #999;
+}
+
+.line::before {
+    margin-right: 12px;
+}
+
+.line::after {
+    margin-left: 12px;
+}
+
+.between-large-numbers {
+    display: flex;
+    justify-content: center;
+}
+
+/* Under buttons text */
+.something1-control {
+    display: flex;
+    justify-content: center;
+    max-width: 300px;
+}
+
+.something1 {
+    display: flex;
+    flex-direction: column;
+    max-width: 340px;
+}
+
+.something2 {
+    padding-left: 5px;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #1B4079;
+    border-radius: 25px 25px 0 0;
+    padding: 0;
+    margin-top: auto;
+}
+
+.bottom-page-text {
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-right: 50px;
+}
+
+.footer-rows {
+    padding-left: 40px;
+    font-size: 22px;
+    color: #ADCCE1;
+}
+
+.lists {
+    padding-left: 40px;
+    color: #FFFFFF;
+    list-style: none;
+    display: flex;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bottom-page-text-columns-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 20px;
+    padding-top: 40px;
+    gap: 80px;
+}
+
+.bottom-page-text-columns-mid-text {
+    padding-bottom: 2px;
+}
+
+.bottom-right-column-control {
+    padding-right: 20px;
+    padding-left: 40px;
+}
+
+.bottom-page-text-right {
+    font-size: 22px;
+    color: #ADCCE1;
+}
+
+/* Phone box */
+.bottom-page-text-right-phone {
+    background-color: white;
+    color: #1B4079;
+    border-radius: 15px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom-page-text-columns-right-phone-number {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.bottom-page-text-right-phone-text {
+    padding-left: 20px;
+}
+
+.phone-text-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.under-phone-text {
+    padding-top: 20px;
+    max-width: 310px;
+}
+
+.bottom-page-text-right-under-phone {
+    color: #ADCCE1;
+}
+
+.text-color-bottom {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Footer button */
+.button {
+    border-radius: 40px;
+    background: linear-gradient(299deg, #B90E49 3%, #F1680B 18%, #F9AB00 33%, #F9AB00 67%, #F1680B 82%, #B90E49 97%);
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding: 15px;
+}
+
+.control-wrap-bottom-page-text-right-under-phone {
+    padding-top: 10px;
+}
+
+/* Modal popup (antd má vlastní) */
+.hidden {
+    display: none;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+    .top {
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .picture1 img, .picture2 img {
+        width: 120px;
+    }
+
+    .picture3 {
+        width: 0;
+        height: 0;
+    }
+
+    .middle-text-wrap {
+        width: 100%;
+        align-items: center;
+    }
+
+    .email-input {
+        width: 90%;
+        max-width: 350px;
+        padding-right: 0;
+        font-size: 16px;
+    }
+
+    .password-input {
+        width: 75%;
+        max-width: 310px;
+        padding-right: 0;
+        font-size: 16px;
+    }
+
+    .large-btn1 {
+        width: 80%;
+        max-width: 350px;
+    }
+
+    .line {
+        width: 90%;
+        max-width: 350px;
+    }
+
+    .large-btn2 {
+        max-width: 350px;
+    }
+
+    .footer {
+        flex-direction: column;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .bottom-page-text {
+        gap: 20px;
+    }
+
+    .bottom-page-text-columns-right {
+        padding-left: 0;
+        padding-right: 5px;
+    }
+
+    .bottom-page-text-columns-mid {
+        padding-left: 0;
+        padding-top: 0;
+    }
+
+    .bottom-page-text-right-phone {
+        width: 100%;
+    }
+
+    .under-phone-text {
+        text-align: left;
+    }
+
+    .button {
+        width: 150px;
+    }
+
+    .btn {
+        padding-right: 70px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .control-wrap-bottom-page-text-right-under-phone {
+        max-width: 254px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-self: center;
+    }
+
+    .bottom-page-text-columns-wrapper {
+        gap: 10px;
+    }
+}
