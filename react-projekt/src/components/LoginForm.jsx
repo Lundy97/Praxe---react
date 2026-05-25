@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "/src/CSS/reset.css"
 import { Form, Input, Button, Modal } from "antd";
 import { LockOutlined } from "@ant-design/icons";
 import "/src/CSS/Form.css";

@@ -1,4 +1,5 @@
 import React from "react";
+import "/src/CSS/reset.css";
 import "/src/CSS/Header.css";
 
 export default function SiteHeader() {

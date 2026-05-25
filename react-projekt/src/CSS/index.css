@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* GLOBAL RESET */
 html, body, #root {
     height: 100%;
     margin: 0;
@@ -14,7 +15,7 @@ body {
     min-width: 100px;
 }
 
-/* TOP */
+/* TOP BAR (přesunout do Header.css, ale nechávám tu verzi bez duplicit) */
 .top {
     display: flex;
     justify-content: space-between;
@@ -32,7 +33,7 @@ body {
     width: 160px;
 }
 
-/* MIDDLE */
+/* MIDDLE SECTION (části patří do Form.css – nechávám jen layout) */
 .middle {
     display: flex;
     flex-direction: column;
@@ -48,21 +49,12 @@ body {
     color: #194564;
 }
 
-.mid-text-format {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.middle-text {
-    display: flex;
-}
-
 .star {
     padding-left: 2px;
     color: #B90E49;
 }
 
-/* Inputs */
+/* INPUTS – přesunout do Form.css */
 .email-input, .password-input {
     line-height: 50px;
     padding-left: 15px;
@@ -78,7 +70,7 @@ body {
     max-width: 600px;
 }
 
-/* password eye (antd má vlastní) */
+/* PASSWORD EYE – patří do Form.css */
 .password-wrapper {
     position: relative;
     display: flex;
@@ -97,13 +89,7 @@ body {
     user-select: none;
 }
 
-/* Forgotten password */
-.c-Text-forgotten-password {
-    display: flex;
-    align-items: center;
-}
-
-/* BUTTONS */
+/* BUTTONS – patří do Form.css */
 .buttons {
     display: flex;
     flex-direction: column;
@@ -136,7 +122,7 @@ body {
     border: 2px solid #194564;
 }
 
-/* "nebo" line */
+/* DIVIDER – patří do Form.css */
 .line {
     display: flex;
     align-items: center;
@@ -158,29 +144,7 @@ body {
     margin-left: 12px;
 }
 
-.between-large-numbers {
-    display: flex;
-    justify-content: center;
-}
-
-/* Under buttons text */
-.something1-control {
-    display: flex;
-    justify-content: center;
-    max-width: 300px;
-}
-
-.something1 {
-    display: flex;
-    flex-direction: column;
-    max-width: 340px;
-}
-
-.something2 {
-    padding-left: 5px;
-}
-
-/* FOOTER */
+/* FOOTER – kompletně přesunout do Footer.css */
 .footer {
     background-color: #1B4079;
     border-radius: 25px 25px 0 0;
@@ -188,113 +152,12 @@ body {
     margin-top: auto;
 }
 
-.bottom-page-text {
-    padding-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-right: 50px;
-}
-
-.footer-rows {
-    padding-left: 40px;
-    font-size: 22px;
-    color: #ADCCE1;
-}
-
-.lists {
-    padding-left: 40px;
-    color: #FFFFFF;
-    list-style: none;
-    display: flex;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.bottom-page-text-columns-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    padding-right: 20px;
-    padding-top: 40px;
-    gap: 80px;
-}
-
-.bottom-page-text-columns-mid-text {
-    padding-bottom: 2px;
-}
-
-.bottom-right-column-control {
-    padding-right: 20px;
-    padding-left: 40px;
-}
-
-.bottom-page-text-right {
-    font-size: 22px;
-    color: #ADCCE1;
-}
-
-/* Phone box */
-.bottom-page-text-right-phone {
-    background-color: white;
-    color: #1B4079;
-    border-radius: 15px;
-    padding: 26px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.bottom-page-text-columns-right-phone-number {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.bottom-page-text-right-phone-text {
-    padding-left: 20px;
-}
-
-.phone-text-wrap {
-    display: flex;
-    align-items: center;
-}
-
-.under-phone-text {
-    padding-top: 20px;
-    max-width: 310px;
-}
-
-.bottom-page-text-right-under-phone {
-    color: #ADCCE1;
-}
-
-.text-color-bottom {
-    color: white;
-    text-decoration: underline;
-}
-
-/* Footer button */
-.button {
-    border-radius: 40px;
-    background: linear-gradient(299deg, #B90E49 3%, #F1680B 18%, #F9AB00 33%, #F9AB00 67%, #F1680B 82%, #B90E49 97%);
-    width: 100px;
-    display: flex;
-    justify-content: center;
-    color: white;
-    padding: 15px;
-}
-
-.control-wrap-bottom-page-text-right-under-phone {
-    padding-top: 10px;
-}
-
-/* Modal popup (antd má vlastní) */
+/* HIDDEN – můžeš smazat, antd má vlastní */
 .hidden {
     display: none;
 }
 
-/* MEDIA QUERIES */
+/* MEDIA QUERIES – zjednodušené */
 @media (max-width: 768px) {
     .top {
         justify-content: flex-start;
@@ -341,54 +204,5 @@ body {
 
     .large-btn2 {
         max-width: 350px;
-    }
-
-    .footer {
-        flex-direction: column;
-        border-radius: 20px 20px 0 0;
-    }
-
-    .bottom-page-text {
-        gap: 20px;
-    }
-
-    .bottom-page-text-columns-right {
-        padding-left: 0;
-        padding-right: 5px;
-    }
-
-    .bottom-page-text-columns-mid {
-        padding-left: 0;
-        padding-top: 0;
-    }
-
-    .bottom-page-text-right-phone {
-        width: 100%;
-    }
-
-    .under-phone-text {
-        text-align: left;
-    }
-
-    .button {
-        width: 150px;
-    }
-
-    .btn {
-        padding-right: 70px;
-        display: flex;
-        justify-content: center;
-    }
-
-    .control-wrap-bottom-page-text-right-under-phone {
-        max-width: 254px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        align-self: center;
-    }
-
-    .bottom-page-text-columns-wrapper {
-        gap: 10px;
     }
 }

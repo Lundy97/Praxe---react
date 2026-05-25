@@ -1,4 +1,5 @@
 import React from "react";
+import "/src/CSS/reset.css"
 import { PhoneOutlined } from "@ant-design/icons";
 import "/src/CSS/Footer.css";
 import footerData from "../data.json";
