@@ -1,0 +1,103 @@
+.login-container {
+    color: #194564;
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.required-star {
+    color: #b90e49;
+    margin-left: 4px;
+}
+
+.styled-input,
+.styled-password {
+    line-height: 50px;
+    padding-left: 15px;
+    font-size: 18px;
+}
+
+.forgot-password {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    color: #194564;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.login-button {
+    width: 180px;
+    border-radius: 25px;
+    background-color: #b90e49 !important;
+    border: 8px solid #b90e49 !important;
+    color: white !important;
+    font-size: 18px;
+    padding: 12px 0;
+}
+
+.register-button {
+    width: 320px;
+    border-radius: 25px;
+    background-color: #194564 !important;
+    border: 12px solid #194564 !important;
+    color: white !important;
+    font-size: 18px;
+    padding: 12px 0;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    color: #555;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1.5px solid #999;
+}
+
+.divider::before {
+    margin-right: 12px;
+}
+
+.divider::after {
+    margin-left: 12px;
+}
+
+.divider-text {
+    display: flex;
+    justify-content: center;
+}
+
+.help-wrapper {
+    max-width: 300px;
+    text-align: center;
+}
+
+.help-text {
+    display: block;
+    max-width: 340px;
+    font-weight: 400;
+}
+
+.help-link {
+    margin-left: 5px;
+    color: #194564;
+    text-decoration: underline;
+}

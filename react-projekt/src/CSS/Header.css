@@ -1,0 +1,24 @@
+.header-wrapper {
+    background: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 9999;
+}
+
+.logo-left,
+.logo-right {
+    display: flex;
+    align-items: center;
+}
+
+.spacer {
+    width: 160px;
+}
+
+@media (max-width: 768px) {
+    .spacer {
+        width: 0;
+        height: 0;
+    }
+}

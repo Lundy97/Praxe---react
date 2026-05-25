@@ -1,0 +1,48 @@
+{
+  "footer": [
+    {
+      "title": "Amber Plasma",
+      "items": [
+        "Proč darovat plazmu",
+        "Staňte se dárcem",
+        "Odměny",
+        "Novinky",
+        "Slovník pojmů",
+        "FAQ"
+      ]
+    },
+    {
+      "title": "O nás",
+      "items": [
+        "O společnosti",
+        "Kariéra",
+        "Napsali o nás",
+        "Partneři",
+        "Kontakty",
+        "Whistleblowing",
+        "GDPR"
+      ]
+    },
+    {
+      "title": "Dárcovská centra",
+      "items": [
+        "Česká Lípa",
+        "Děčín",
+        "Cheb",
+        "Chomutov",
+        "Jablonec nad Nisou",
+        "Karlovy Vary"
+      ]
+    },
+    {
+      "items": [
+        "Litoměřice",
+        "Mladá Boleslav",
+        "Plzeň",
+        "Praha - Nové Butovice",
+        "Příbram",
+        "Teplice"
+      ]
+    }
+  ]
+}
