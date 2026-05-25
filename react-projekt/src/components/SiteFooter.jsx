@@ -1,7 +1,7 @@
 import React from "react";
-import "/src/CSS/reset.css"
+import "/src/css/reset.css"
 import { PhoneOutlined } from "@ant-design/icons";
-import "/src/CSS/Footer.css";
+import "/src/css/Footer.css";
 import footerData from "../data.json";
 
 export default function SiteFooter() {

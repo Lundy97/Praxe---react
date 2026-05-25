@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "/src/CSS/reset.css"
+import "/src/css/reset.css"
 import { Form, Input, Button, Modal } from "antd";
 import { LockOutlined } from "@ant-design/icons";
-import "/src/CSS/Form.css";
+import "/src/css/Form.css";
 
-export default function LoginForm() {
+export default function LoginPage() {
     const [popupVisible, setPopupVisible] = useState(false);
     const [outEmail, setOutEmail] = useState("");
     const [outPassword, setOutPassword] = useState("");
