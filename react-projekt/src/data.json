@@ -25,17 +25,14 @@
     },
     {
       "title": "Dárcovská centra",
+      "columns": 2,
       "items": [
         "Česká Lípa",
         "Děčín",
         "Cheb",
         "Chomutov",
         "Jablonec nad Nisou",
-        "Karlovy Vary"
-      ]
-    },
-    {
-      "items": [
+        "Karlovy Vary",
         "Litoměřice",
         "Mladá Boleslav",
         "Plzeň",

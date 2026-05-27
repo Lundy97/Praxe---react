@@ -1,18 +1,42 @@
 import React from "react";
-import "/src/css/reset.css"
 import { PhoneOutlined } from "@ant-design/icons";
-import "/src/css/Footer.css";
 import footerData from "../data.json";
 
+function splitItems(items, columns = 1) {
+    const perColumn = Math.ceil(items.length / columns);
+    return Array.from({ length: columns }, (_, i) =>
+        items.slice(i * perColumn, (i + 1) * perColumn)
+    );
+}
+
 export default function SiteFooter() {
+
+    // Připravíme si sloupce podle konfigurace v JSONu
+    const footerColumns = footerData.footer.flatMap(col => {
+        const cols = col.columns || 1;
+
+        if (cols > 1) {
+            const split = splitItems(col.items, cols);
+
+            return split.map((items, i) => ({
+                title: i === 0 ? col.title : null,
+                items
+            }));
+        }
+
+        return col;
+    });
+
     return (
         <footer className="footer-wrapper">
             <div className="footer-content">
 
                 <div className="footer-columns">
-                    {footerData.footer.map((column, index) => (
+                    {footerColumns.map((column, index) => (
                         <div className="footer-column" key={index}>
-                            <span className="footer-title">{column.title}</span>
+                            {column.title && (
+                                <span className="footer-title">{column.title}</span>
+                            )}
 
                             <ul className="footer-list">
                                 {column.items.map((item, i) => (
@@ -30,7 +54,10 @@ export default function SiteFooter() {
 
                     <div className="phone-box">
                         <span className="phone-row">
-                            <PhoneOutlined style={{ marginRight: 8 }} />
+                            <span className="phone-icon">
+                                <PhoneOutlined style={{ marginRight: 8, transform: "scaleX(-1)"}} />
+                            </span>
+
                             <span className="phone-number">800 606 806</span>
                         </span>
 
@@ -47,7 +74,6 @@ export default function SiteFooter() {
                         <div className="footer-button">Objednat se</div>
                     </div>
                 </div>
-
             </div>
         </footer>
     );

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @import "reset.css";
 @import "Header.css";
-@import "Form.css";
+@import "Page.css";
 @import "Footer.css";
 
 /* GLOBAL RESET */
@@ -37,7 +37,7 @@ body {
     width: 160px;
 }
 
-/* MIDDLE SECTION (části patří do Form.css – nechávám jen layout) */
+/* MIDDLE SECTION (části patří do Page.css – nechávám jen layout) */
 .middle {
     display: flex;
     flex-direction: column;
@@ -58,7 +58,7 @@ body {
     color: #B90E49;
 }
 
-/* INPUTS – přesunout do Form.css */
+/* INPUTS – přesunout do Page.css */
 .email-input, .password-input {
     line-height: 50px;
     padding-left: 15px;
@@ -74,7 +74,7 @@ body {
     max-width: 600px;
 }
 
-/* PASSWORD EYE – patří do Form.css */
+/* PASSWORD EYE – patří do Page.css */
 .password-wrapper {
     position: relative;
     display: flex;
@@ -93,7 +93,7 @@ body {
     user-select: none;
 }
 
-/* BUTTONS – patří do Form.css */
+/* BUTTONS – patří do Page.css */
 .buttons {
     display: flex;
     flex-direction: column;
@@ -126,7 +126,7 @@ body {
     border: 2px solid #194564;
 }
 
-/* DIVIDER – patří do Form.css */
+/* DIVIDER – patří do Page.css */
 .line {
     display: flex;
     align-items: center;

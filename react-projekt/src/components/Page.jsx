@@ -1,18 +1,33 @@
 import React, { useState } from "react";
-import "/src/css/reset.css"
 import { Form, Input, Button, Modal } from "antd";
 import { LockOutlined } from "@ant-design/icons";
-import "/src/css/Form.css";
+import axios from "axios";
 
-export default function LoginPage() {
+export default function Page() {
     const [popupVisible, setPopupVisible] = useState(false);
     const [outEmail, setOutEmail] = useState("");
     const [outPassword, setOutPassword] = useState("");
 
-    const onFinish = (values) => {
-        setOutEmail(values.email);
-        setOutPassword(values.password);
-        setPopupVisible(true);
+    const onFinish = async (values) => {
+        try {
+            // 1) Token přes proxy
+            const authRes = await axios.post("/api/tokens");
+            const token = authRes.data.data.token_id;
+
+            console.log("Token acquired:", token);
+
+            // 2) Zákazníci přes proxy
+            const userRes = await axios.get("/api/customers", {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+
+            console.log("Customer information received");
+            console.dir(userRes.data.data.customers);
+
+        } catch (error) {
+            console.error("API Failed:");
+            console.error(error.response ? error.response.data : error.message);
+        }
     };
 
     return (
@@ -20,11 +35,7 @@ export default function LoginPage() {
             <Form layout="vertical" onFinish={onFinish} requiredMark={false}>
 
                 <Form.Item
-                    label={
-                        <span className="label">
-                            Email<span className="required-star">*</span>
-                        </span>
-                    }
+                    label={<span className="label">Email<span className="required-star">*</span></span>}
                     name="email"
                     rules={[
                         { required: true, message: "Vyplňte prosím e-mail." },
@@ -35,11 +46,7 @@ export default function LoginPage() {
                 </Form.Item>
 
                 <Form.Item
-                    label={
-                        <span className="label">
-                            Heslo<span className="required-star">*</span>
-                        </span>
-                    }
+                    label={<span className="label">Heslo<span className="required-star">*</span></span>}
                     name="password"
                     rules={[{ required: true, message: "Vyplňte prosím heslo." }]}
                 >
@@ -68,20 +75,6 @@ export default function LoginPage() {
                     </div>
                 </div>
             </Form>
-
-            <Modal
-                open={popupVisible}
-                onCancel={() => setPopupVisible(false)}
-                footer={[
-                    <Button key="close" type="primary" onClick={() => setPopupVisible(false)}>
-                        Zavřít
-                    </Button>
-                ]}
-                title="Zadal jsi:"
-            >
-                <p>E-mail: {outEmail}</p>
-                <p>Heslo: {outPassword}</p>
-            </Modal>
         </div>
     );
 }

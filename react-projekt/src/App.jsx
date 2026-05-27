@@ -1,24 +1,20 @@
 import React from "react";
 import { Layout } from "antd";
 import SiteHeader from "./components/SiteHeader";
-import LoginPage from "./components/LoginPage.jsx";
+import Page from "./components/Page.jsx";
 import SiteFooter from "./components/SiteFooter.jsx";
-import {BrowserRouter} from "react-router-dom";
-
-const { Content } = Layout;
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 export default function App() {
   return (
-      <BrowserRouter>
+      <Router>
         <Layout style={{ minHeight: "100vh", background: "#CBDEE6" }}>
             <SiteHeader/>
-                <Content style={{ padding: "125px 16px 20px" }}>
-                        <div style={{ display: "flex", justifyContent: "center" }}>
-                <LoginPage/>
-                        </div>
-                </Content>
+                <Routes>
+                    <Route path={"/"} element={<Page />}/>
+                </Routes>
             <SiteFooter/>
         </Layout>
-      </BrowserRouter>
+      </Router>
   );
 }
