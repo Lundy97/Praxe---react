@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
 import SiteHeader from "./components/SiteHeader";
-import Page from "./components/Page.jsx";
+import Page from "./components/Login_page.jsx";
 import SiteFooter from "./components/SiteFooter.jsx";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
