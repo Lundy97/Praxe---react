@@ -25,22 +25,11 @@ function Profile() {
 
     const { personal_information, address_information } = data;
 
-    // 2) Funkce pro lokální změny
     const updatePersonal = (field, value) => {
         setData(prev => ({
             ...prev,
             personal_information: {
                 ...prev.personal_information,
-                [field]: value
-            }
-        }));
-    };
-
-    const updateAddress = (field, value) => {
-        setData(prev => ({
-            ...prev,
-            address_information: {
-                ...prev.address_information,
                 [field]: value
             }
         }));
@@ -109,6 +98,11 @@ function Profile() {
                     />
                 </div>
             </div>
+        <div className="btn-wrap">
+            {
+                <button className="btn-save">Uložit</button>
+            }
+        </div>
         </Content>
     );
 }
