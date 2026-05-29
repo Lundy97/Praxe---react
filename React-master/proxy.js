@@ -1,105 +1,93 @@
-import express from "express";
-import axios from "axios";
-import cors from "cors";
+import express from 'express';
+import axios from 'axios';
 
 const app = express();
-app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" })); // React
 
-const API_URL = "https://sandbox.crmcarecloud.com/webservice/rest-api/customer-interface/v1.0";
-const APP_ID = "85d6598db0bf3f62afd5db8507";
+const API_URL = 'https://sandbox.crmcarecloud.com/webservice/rest-api/customer-interface/v1.0';
 
-async function safeRequest(promise) {
+// Povolené originy
+const allowedOrigins = [
+    /^http:\/\/localhost(:\d+)?$/,
+    /^http:\/\/127\.0\.0\.1(:\d+)?$/,
+    /^http:\/\/192\.168\.\d+\.\d+(:\d+)?$/, // lokální síť
+    /^https:\/\/example\.com$/,
+];
+
+app.use(express.raw({ type: '*/*' }));
+
+app.use(async (req, res) => {
+    const origin = req.headers.origin;
+
+    // Kontrola originu
+    if (
+        origin &&
+        !allowedOrigins.some(pattern => pattern.test(origin))
+    ) {
+        return res.status(403).json({
+            error: 'Forbidden',
+        });
+    }
+
+    // CORS odpověď
+    if (origin) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+        res.setHeader('Access-Control-Allow-Credentials', 'true');
+        res.setHeader(
+            'Access-Control-Allow-Headers',
+            'Content-Type, Authorization, X-External-App-Id, X-Auth-Token'
+        );
+        res.setHeader(
+            'Access-Control-Allow-Methods',
+            'GET, POST, PUT, PATCH, DELETE, OPTIONS'
+        );
+    }
+
+    // Preflight
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(204);
+    }
+    const headers = { ...req.headers };
+    delete headers.host;
+    delete headers.origin;
+    delete headers.referer;
+    delete headers['content-length'];
+
+    const targetUrl = `${API_URL}${req.originalUrl}`;
+
     try {
-        const res = await promise;
-        return {ok: true, data: res.data};
-    } catch (err) {
-        let msg = "Neznámá chyba";
-
-        if (err.response) {
-            msg = err.response.data?.message || `Server error: ${err.response.status}`;
-        } else if (err.request) {
-            msg = "Server neodpovídá.";
-        } else {
-            msg = err.message;
-        }
-
-        return {ok: false, error: msg};
-    }
-}
-
-app.post("/login", async (req, res) => {
-    const { email, password } = req.body;
-
-
-    const tokenRes = await safeRequest(
-        axios.post(`${API_URL}/tokens`, {
-            setup: {
-                setup_id: "1",
-                language_id: "cs",
-                allowed_gps: "false",
-                allowed_notifications: false
-            },
-            device: {
-                device_id: "my-unique-web-id-001",
-                device_type: "7",
-                device_system: "Web",
-                device_name: "Firefox"
-            },
-            user: {
-                login: email,
-                password: password
-            },
-            properties: ["customer"],
-            "X-External-App-Id": APP_ID
-        })
-    );
-
-    if (!tokenRes.ok) {
-        return res.json({ success: false, message: "Špatný email nebo heslo." });
-    }
-
-    const token = tokenRes.data.data.token_id;
-
-    const loginRes = await safeRequest(
-        axios.post(`${API_URL}/tokens/${token}/actions/login`, {
-            login_type: "email",
-            login_value: email,
-            password: password,
-            "X-External-App-Id": APP_ID
-        }, {
-            headers: { Authorization: "Bearer " + token }
-        })
-    );
-
-    if (!loginRes.ok) {
-        return res.json({ success: false, message: "Přihlášení selhalo." });
-    }
-
-    const customerId = loginRes.data.data.customer_id;
-
-    const userRes = await safeRequest(
-        axios.get(`${API_URL}/customers/${customerId}`, {
+        const response = await axios({
+            method: req.method,
+            url: targetUrl,
             headers: {
-                Authorization: "Bearer " + token,
-                "X-External-App-Id": APP_ID
-            }
-        })
-    );
+                ...req.headers,
+                host: 'sandbox.crmcarecloud.com',
+                origin: undefined,
+                referer: undefined
+            },
+            data: req.body,
+            responseType: 'stream',
+            validateStatus: () => true,
+        });
 
-    if (!userRes.ok) {
-        return res.json({ success: false, message: "Nepodařilo se načíst data uživatele." });
+        res.status(response.status);
+
+        Object.entries(response.headers).forEach(([key, value]) => {
+            if (value) {
+                res.setHeader(key, value);
+            }
+        });
+
+        response.data.pipe(res);
+
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({
+            error: 'Proxy failed',
+        });
     }
-    return res.json({
-        success: true,
-        redirectUrl: "/dashboard",
-        customer: userRes.data.data.customers,
-        email: email,
-        token: token,
-        customer_id: customerId
-    });
 });
 
-app.listen(3001, () => {
-    console.log("Backend běží na http://localhost:3001");
+app.listen(3000, '0.0.0.0', () => {
+    console.log('Proxy běží na http://0.0.0.0:3000');
 });
